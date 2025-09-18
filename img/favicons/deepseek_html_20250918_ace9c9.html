@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Структура БД для формы обратной связи</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .schema-container {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .db-schema {
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .schema-header {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #2d3436;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #6a11cb;
+        }
+        
+        .table {
+            margin-bottom: 30px;
+            border: 2px solid #6a11cb;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .table-header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .table-content {
+            padding: 0;
+        }
+        
+        .field {
+            display: flex;
+            padding: 12px 15px;
+            border-bottom: 1px solid #eef1f5;
+        }
+        
+        .field:last-child {
+            border-bottom: none;
+        }
+        
+        .field:nth-child(even) {
+            background-color: #f9fafc;
+        }
+        
+        .field-name {
+            flex: 1;
+            font-weight: 600;
+        }
+        
+        .field-type {
+            flex: 1;
+            color: #6a11cb;
+            font-family: monospace;
+        }
+        
+        .field-desc {
+            flex: 2;
+            color: #636e72;
+        }
+        
+        .pk {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+        
+        .fk {
+            color: #2575fc;
+        }
+        
+        .sql-code {
+            background: #2d3436;
+            border-radius: 10px;
+            padding: 25px;
+            color: #f9fafc;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+            overflow-x: auto;
+        }
+        
+        .sql-code h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #6a11cb;
+        }
+        
+        pre {
+            white-space: pre-wrap;
+            line-height: 1.5;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .code-keyword {
+            color: #ff6b6b;
+        }
+        
+        .code-string {
+            color: #a5d6ff;
+        }
+        
+        .code-comment {
+            color: #636e72;
+        }
+        
+        .code-function {
+            color: #ffd700;
+        }
+        
+        .additional-tables {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .additional-table {
+            flex: 1;
+            min-width: 300px;
+            border: 2px solid #6a11cb;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .additional-header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #636e72;
+            border-top: 1px solid #eef1f5;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .field {
+                flex-direction: column;
+            }
+            
+            .field-name, .field-type, .field-desc {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Структура базы данных</h1>
+            <p class="subtitle">Для формы обратной связи</p>
+        </header>
+        
+        <div class="content">
+            <div class="schema-container">
+                <div class="db-schema">
+                    <div class="schema-header">
+                        <h2>Таблица: feedback</h2>
+                        <p>Основная таблица для хранения данных формы обратной связи</p>
+                    </div>
+                    
+                    <div class="table">
+                        <div class="table-header">
+                            feedback
+                        </div>
+                        <div class="table-content">
+                            <div class="field">
+                                <div class="field-name"><span class="pk">id</span></div>
+                                <div class="field-type">INT</div>
+                                <div class="field-desc">Первичный ключ, автоинкремент</div>
+                            </div>
+                            <div class="field">
+                                <div class="field-name">name</div>
+                                <div class="field-type">VARCHAR(100)</div>
+                                <div class="field-desc">Имя пользователя</div>
+                            </div>
+                            <div class="field">
+                                <div class="field-name">email</div>
+                                <div class="field-type">VARCHAR(100)</div>
+                                <div class="field-desc">Email пользователя</div>
+                            </div>
+                            <div class="field">
+                                <div class="field-name">phone</div>
+                                <div class="field-type">VARCHAR(20)</div>
+                                <div class="field-desc">Телефон (необязательное поле)</div>
+                            </div>
+                            <div class="field">
+                                <div class="field-name">subject</div>
+                                <div class="field-type">ENUM</div>
+                                <div class="field-desc">Тема сообщения (question, suggestion, complaint, other)</div>
+                            </div>
+                            <div class="field">
+                                <div class="field-name">message</div>
+                                <div class="field-type">TEXT</div>
+                                <div class="field-desc">Текст сообщения</div>
+                            </div>
+                            <div class="field">
+                                <div class="field-name">created_at</div>
+                                <div class="field-type">TIMESTAMP</div>
+                                <div class="field-desc">Дата и время создания записи</div>
+                            </div>
+                            <div class="field">
+                                <div class="field-name">is_processed</div>
+                                <div class="field-type">BOOLEAN</div>
+                                <div class="field-desc">Флаг обработки сообщения</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sql-code">
+                <h2>SQL для создания таблицы</h2>
+                <pre>
+<span class="code-keyword">CREATE TABLE</span> <span class="code-function">feedback</span> (
+    <span class="code-function">id</span> <span class="code-keyword">INT</span> <span class="code-keyword">AUTO_INCREMENT PRIMARY KEY</span>,
+    <span class="code-function">name</span> <span class="code-keyword">VARCHAR</span>(100) <span class="code-keyword">NOT NULL</span>,
+    <span class="code-function">email</span> <span class="code-keyword">VARCHAR</span>(100) <span class="code-keyword">NOT NULL</span>,
+    <span class="code-function">phone</span> <span class="code-keyword">VARCHAR</span>(20),
+    <span class="code-function">subject</span> <span class="code-keyword">ENUM</span>(<span class="code-string">'question'</span>, <span class="code-string">'suggestion'</span>, <span class="code-string">'complaint'</span>, <span class="code-string">'other'</span>) <span class="code-keyword">NOT NULL</span>,
+    <span class="code-function">message</span> <span class="code-keyword">TEXT</span> <span class="code-keyword">NOT NULL</span>,
+    <span class="code-function">created_at</span> <span class="code-keyword">TIMESTAMP DEFAULT CURRENT_TIMESTAMP</span>,
+    <span class="code-function">is_processed</span> <span class="code-keyword">BOOLEAN DEFAULT FALSE</span>
+);
+
+<span class="code-comment">-- Создание индексов для оптимизации запросов</span>
+<span class="code-keyword">CREATE INDEX</span> <span class="code-function">idx_email</span> <span class="code-keyword">ON</span> <span class="code-function">feedback</span> (<span class="code-function">email</span>);
+<span class="code-keyword">CREATE INDEX</span> <span class="code-function">idx_created_at</span> <span class="code-keyword">ON</span> <span class="code-function">feedback</span> (<span class="code-function">created_at</span>);
+<span class="code-keyword">CREATE INDEX</span> <span class="code-function">idx_processed</span> <span class="code-keyword">ON</span> <span class="code-function">feedback</span> (<span class="code-function">is_processed</span>);
+                </pre>
+            </div>
+            
+            <div class="additional-tables">
+                <div class="additional-table">
+                    <div class="additional-header">
+                        Таблица: feedback_status (дополнительная)
+                    </div>
+                    <div class="table-content">
+                        <div class="field">
+                            <div class="field-name"><span class="pk">id</span></div>
+                            <div class="field-type">INT</div>
+                            <div class="field-desc">Первичный ключ</div>
+                        </div>
+                        <div class="field">
+                            <div class="field-name">status_name</div>
+                            <div class="field-type">VARCHAR(50)</div>
+                            <div class="field-desc">Название статуса</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="additional-table">
+                    <div class="additional-header">
+                        Таблица: feedback_attachments (дополнительная)
+                    </div>
+                    <div class="table-content">
+                        <div class="field">
+                            <div class="field-name"><span class="pk">id</span></div>
+                            <div class="field-type">INT</div>
+                            <div class="field-desc">Первичный ключ</div>
+                        </div>
+                        <div class="field">
+                            <div class="field-name"><span class="fk">feedback_id</span></div>
+                            <div class="field-type">INT</div>
+                            <div class="field-desc">Внешний ключ к таблице feedback</div>
+                        </div>
+                        <div class="field">
+                            <div class="field-name">file_name</div>
+                            <div class="field-type">VARCHAR(255)</div>
+                            <div class="field-desc">Имя файла</div>
+                        </div>
+                        <div class="field">
+                            <div class="field-name">file_path</div>
+                            <div class="field-type">VARCHAR(500)</div>
+                            <div class="field-desc">Путь к файлу</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 Структура базы данных для формы обратной связи</p>
+        </footer>
+    </div>
+</body>
+</html>
