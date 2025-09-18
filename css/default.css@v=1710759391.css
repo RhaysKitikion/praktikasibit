@@ -1,0 +1,645 @@
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+label {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+input, textarea {
+  padding: 5px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  resize: none;
+}
+
+button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+@font-face {
+    font-family: 'Noto Serif';
+    src: local('Noto Serif Bold'), local('Noto-Serif-Bold'), url('../fonts/NotoSerif-Bold.woff2') format('woff2'), url('../fonts/NotoSerif-Bold.woff') format('woff'), url('../fonts/NotoSerif-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: local('Source Sans Pro Regular'), local('Source-Sans-Pro-Regular'), url('../fonts/SourceSansPro-Regular.woff2') format('woff2'), url('../fonts/SourceSansPro-Regular.woff') format('woff'), url('../fonts/SourceSansPro-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+:root {
+    --black-text: #000;
+    --white-text: #fff;
+    --black-bg: #000;
+    --white-bg: #fff;
+    --z-index-main-text: 2;
+    --z-index-main-gradient: 1;
+}
+
+.for-test {
+    padding: 0 204px;
+}
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+body {
+    background-color: #187f7e;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+h1,
+h2 {
+    font-family: 'Noto Serif', serif;
+}
+
+
+/* MAIN SECTOR */
+
+.main-sector {
+    background: url("../img/main_bg.png") no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+.main-sector:after {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 50%);
+    z-index: var(--z-index-main-gradient);
+}
+
+.main-header {
+    padding: 74px 220px;
+    z-index: var(--z-index-main-text);
+}
+
+.main-header .nav {
+    justify-content: space-between;
+}
+
+.main-header .nav-link {
+    padding: 0 0 0 0;
+    font-size: 16px;
+    color: #fff;
+    line-height: 10px
+}
+
+.main-title-container {
+    position: absolute;
+    color: #fff;
+    left: 222px;
+    bottom: 128px;
+    z-index: var(--z-index-main-text);
+}
+
+.main-title {
+    font-size: 118px;
+    line-height: 118px;
+    margin-bottom: 124px;
+}
+
+.main-subtitle {
+    font-size: 36px;
+    margin: 0 0 0 0px;
+    line-height: 48px;
+}
+
+
+/* TEXT SECTOR */
+
+.text-sector {
+    display: flex;
+    padding: 0 220px;
+}
+
+.text-sector__black {
+    color: var(--white-text);
+}
+
+.text-sector__white {
+    color: var(--white-bg);
+}
+
+.text-sector__col {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 50%;
+}
+
+.text-sector__title {
+    font-size: 37px;
+    text-transform: uppercase;
+}
+
+.text-sector__text {
+    margin-bottom: 25px;
+}
+
+.text-sector__text-side {
+    padding: 0 0 0 30px;
+}
+
+
+/* SPECIAL SECTORS */
+
+.about-sector {
+    margin-top: 273px;
+}
+
+.about-photo-sector {
+    margin-top: 193px;
+}
+
+.marshrut-sector {
+    margin-top: 345px;
+}
+
+.marshrut-photo-sector {
+    margin-top: 307px;
+}
+
+.event-sector {
+    margin-top: 234px;
+    padding-top: 229px;
+}
+
+.about-photo-sector .photo-sector__photo1 {
+    padding-right: 4.7%;
+}
+
+.marshrut-photo-sector .photo-sector__photo1 {
+    padding-left: 4.7%;
+}
+
+
+/* PHOTO SECTOR */
+
+.photo-sector {
+    display: flex;
+    justify-content: space-between;
+    color: var(--white-text);
+    padding: 0 220px;
+}
+
+.photo-sector__photo-container {
+    background-color: grey;
+}
+
+.photo-sector__title {
+    margin-bottom: 47px;
+}
+
+.photo-sector__photo-container img {
+    width: 100%;
+}
+
+.photo-sector__photo1 {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 69%;
+}
+
+.photo-sector__photo2 {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 30%;
+}
+
+
+/* EVENT LIST SECTOR */
+
+.event-list-sector {
+    display: flex;
+    padding: 258px 220px 275px 220px;
+	color: var(--white-text);
+}
+
+.event-list-sector__item {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 30.4%;
+}
+
+.event-list-sector__item+.event-list-sector__item {
+    margin-left: 65px;
+}
+
+.event-list-sector__photo-container img {
+    width: 100%;
+}
+
+.event-list-sector__item-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 52px;
+    margin-bottom: 26px;
+}
+
+
+/* FOOTER */
+
+footer {
+    display: flex;
+    color: var(--white-text);
+    padding: 0 220px 198px 220px;
+    margin-top: 112px;
+}
+
+.footer-sector__title {
+    font-size: 37px;
+    text-transform: uppercase;
+}
+
+.ogikm-logo {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-image: url(../img/logo-ogikm.svg);
+    width: 63px;
+    height: 62px;
+}
+
+.footer-sector__text-side {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 0 30px;
+}
+
+.footer-sector__text-side a {
+    text-decoration: underline;
+}
+
+.footer-sector__col {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 50%;
+}
+
+.footer-sector__contact p {
+    margin-bottom: 46px;
+}
+
+.footer-sector__contact a {
+    margin-right: 5px;
+}
+
+.footer-sector__menu {
+    padding-right: 171px;
+}
+
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) and (max-width: 1550px) {
+    .main-title {
+        font-size: 100px;
+        line-height: 112px;
+        margin-bottom: 40px;
+    }
+    .main-subtitle {
+        font-size: 34px;
+        margin: 0 0 0 0px;
+        line-height: 48px;
+    }
+    .footer-sector__menu {
+        padding-right: 100px;
+    }
+}
+
+
+/* 
+    ##Device = Laptops, Desktops
+    ##Screen = B/w 1025px to 1280px
+  */
+
+@media (min-width: 1130px) and (max-width: 1280px) {
+    .pt-sector__text {
+        font-size: 20px;
+    }
+    .main-title-container {
+        left: 120px;
+    }
+    .main-subtitle {
+        font-size: 24px;
+        margin: 8px 0 0 0;
+        line-height: 35px;
+    }
+    .main-title {
+        font-size: 66px;
+        line-height: 68px;
+        margin-bottom: 30px;
+    }
+    .text-sector {
+        padding: 0 80px;
+    }
+    .event-sector {
+        margin-top: 234px;
+        padding-top: 229px;
+    }
+    .event-list-sector__item+.event-list-sector__item {
+        margin-left: 35px;
+    }
+    .photo-sector {
+        padding: 0 60px;
+    }
+    .event-list-sector {
+        padding: 258px 60px 275px 60px;
+    }
+    footer {
+        padding: 0 60px 198px 60px;
+    }
+    .footer-sector__menu {
+        padding-right: 0px;
+    }
+}
+
+
+/* 
+    ##Device = Tablets, Ipads (portrait)
+    ##Screen = B/w 768px to 1024px
+  */
+
+@media (min-width: 768px) and (max-width: 1130px) {
+    .main-header {
+        padding: 42px 28px;
+    }
+    .main-header .nav-link {
+        padding: 0 0 0 18px;
+        font-size: 24px;
+    }
+    .main-title-container {
+        left: 60px;
+    }
+    .main-subtitle {
+        font-size: 24px;
+        margin: 8px 0 0 0;
+        line-height: 35px;
+    }
+    .main-title {
+        font-size: 66px;
+        line-height: 68px;
+        margin-bottom: 30px;
+    }
+    .text-sector {
+        padding: 0 60px;
+    }
+    .event-sector {
+        margin-top: 234px;
+        padding-top: 229px;
+    }
+    .event-list-sector__item+.event-list-sector__item {
+        margin-left: 35px;
+    }
+    .photo-sector {
+        padding: 0 60px;
+    }
+    .event-list-sector {
+        padding: 258px 60px 275px 60px;
+    }
+    footer {
+        padding: 0 60px 198px 60px;
+    }
+    .footer-sector__menu {
+        padding-right: 0px;
+    }
+}
+
+
+/* 
+    ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px
+  */
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .tv-logo {
+        margin-bottom: 28px;
+    }
+    .nav {
+        justify-content: center;
+    }
+    .main-header {
+        padding: 38px 0px;
+    }
+    .main-header .nav-link {
+        padding: 0 0 0 20px;
+        line-height: 36px;
+    }
+    .main-title-container {
+        bottom: 120px;
+    }
+    .main-subtitle {
+        font-size: 24px;
+        margin: 8px 0 0 0;
+    }
+    .main-title {
+        font-size: 66px;
+        line-height: 68px;
+    }
+    .main-title-container {
+        left: 20px;
+    }
+    .text-sector {
+        flex-flow: column;
+        padding: 0 20px;
+    }
+    .text-sector__title {
+        margin-bottom: 35px;
+    }
+    .text-sector__text-side {
+        padding: 0 0 0 0;
+    }
+    .event-sector {
+        flex-flow: column;
+        margin-top: 134px;
+        padding-top: 129px;
+    }
+    .photo-sector {
+        flex-flow: column;
+        padding: 0 20px;
+    }
+    .about-photo-sector .photo-sector__photo1 {
+        padding-right: 0;
+        margin-bottom: 60px;
+    }
+    .marshrut-photo-sector .photo-sector__photo1 {
+        padding-left: 0;
+        margin-top: 60px;
+    }
+    .event-list-sector {
+        flex-flow: column;
+        padding: 58px 20px 75px 20px
+    }
+    .event-list-sector__item {
+        margin-bottom: 35px;
+    }
+    .event-list-sector__item+.event-list-sector__item {
+        margin-left: 0;
+    }
+    .event-list-sector__item-title {
+        margin-top: 32px;
+        margin-bottom: 32px;
+    }
+    footer {
+        flex-flow: column;
+        padding: 0 20px 58px 20px;
+        margin-top: 58px;
+    }
+    .footer-sector__title {
+        margin-bottom: 35px;
+    }
+    .footer-sector__menu {
+        padding-right: 120px;
+    }
+    .footer-sector__text-side {
+        padding: 0 0 0 0;
+    }
+    .about-sector {
+        margin-top: 73px;
+    }
+    .about-photo-sector {
+        margin-top: 93px;
+    }
+    .marshrut-sector {
+        margin-top: 145px;
+    }
+    .marshrut-photo-sector {
+        margin-top: 107px;
+    }
+}
+
+
+/* 
+    ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px
+  */
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .main-header .nav {
+        justify-content: center;
+    }
+    .main-header {
+        padding: 38px 0px;
+    }
+    .main-header .nav-link {
+        padding: 0 0 0 20px;
+        line-height: 30px;
+        font-size: 22px;
+    }
+    .main-title-container {
+        bottom: 62px;
+    }
+    .main-subtitle {
+        font-size: 15px;
+        margin: 8px 0 0 0;
+        line-height: 25px;
+    }
+    .main-title {
+        font-size: 41px;
+        line-height: 42px;
+        margin-bottom: 24px;
+    }
+    .main-title-container {
+        left: 38px;
+    }
+    .text-sector {
+        flex-flow: column;
+        padding: 0 20px;
+    }
+    .text-sector__title {
+        margin-bottom: 35px;
+    }
+    .text-sector__text-side {
+        padding: 0 0 0 0;
+    }
+    .event-sector {
+        flex-flow: column;
+        margin-top: 134px;
+        padding-top: 129px;
+    }
+    .photo-sector {
+        flex-flow: column;
+        padding: 0 20px;
+    }
+    .about-photo-sector .photo-sector__photo1 {
+        padding-right: 0;
+        margin-bottom: 60px;
+    }
+    .marshrut-photo-sector .photo-sector__photo1 {
+        padding-left: 0;
+        margin-top: 60px;
+    }
+    .event-list-sector {
+        flex-flow: column;
+        padding: 58px 20px 75px 20px
+    }
+    .event-list-sector__item {
+        margin-bottom: 35px;
+    }
+    .event-list-sector__item+.event-list-sector__item {
+        margin-left: 0;
+    }
+    .event-list-sector__item-title {
+        margin-top: 32px;
+        margin-bottom: 32px;
+    }
+    footer {
+        flex-flow: column;
+        padding: 0 20px 58px 20px;
+        margin-top: 58px;
+    }
+    .footer-sector__title {
+        margin-bottom: 35px;
+    }
+    .footer-sector__menu {
+        padding-right: 0px;
+    }
+    .footer-sector__text-side {
+        padding: 0 0 0 0;
+    }
+    .about-sector {
+        margin-top: 73px;
+    }
+    .about-photo-sector {
+        margin-top: 93px;
+    }
+    .marshrut-sector {
+        margin-top: 145px;
+    }
+    .marshrut-photo-sector {
+        margin-top: 107px;
+    }
+}
